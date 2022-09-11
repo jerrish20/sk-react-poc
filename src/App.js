@@ -49,7 +49,7 @@ const customFilterComponents = {
 };
 
 const config = {
-    host: "http://localhost:1234",
+    host: "https://vpc-fs-dev-search-es-6il5jwg3fj3torp3ibfctacw5e.eu-west-1.es.amazonaws.com:443",
     index: "shared_search_data",
     hits: {
         fields: [
