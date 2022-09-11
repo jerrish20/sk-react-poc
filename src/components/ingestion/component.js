@@ -7,11 +7,11 @@ const IngestionInput = () => {
 
     const onChange = (e) => {
         const ingestId = e.target.value;
+        api.removeFiltersByIdentifier('IngestionFilter');
         if (ingestId !== '') {
             api.toggleFilter({identifier: 'IngestionFilter', value: `${e.target.value}`});
             api.search();
         } else {
-            api.removeFiltersByIdentifier('IngestionFilter');
             api.search();
         }
     };

@@ -7,11 +7,11 @@ const BatchInput = () => {
 
     const onChange = (e) => {
         const ingestId = e.target.value;
+        api.removeFiltersByIdentifier('BatchFilter');
         if (ingestId !== '') {
             api.toggleFilter({identifier: 'BatchFilter', value: `${e.target.value}`});
             api.search();
         } else {
-            api.removeFiltersByIdentifier('BatchFilter');
             api.search();
         }
     };

@@ -41,11 +41,16 @@ import {BatchInput, ValueFilter as BatchValueFilter} from "./components/batch/co
 import IngestionFilter from "./components/ingestion/filter";
 import {IngestionInput, ValueFilter as IngestionValueFilter} from "./components/ingestion/component";
 
+import FunderNameFilter from "./components/funderName/filter";
+import {FunderNameInput, ValueFilter as FunderNameValueFilter} from "./components/funderName/component";
+
 import "@elastic/eui/dist/eui_theme_light.css";
+
 
 const customFilterComponents = {
     "IngestionFilter": IngestionValueFilter,
-    "BatchFilter": BatchValueFilter
+    "BatchFilter": BatchValueFilter,
+    "FunderNameFilter": FunderNameValueFilter
 };
 
 const config = {
@@ -80,6 +85,7 @@ const config = {
     filters: [
         new IngestionFilter(),
         new BatchFilter(),
+        new FunderNameFilter(),
     ],
     facets: [
         new DateRangeFacet({
@@ -111,7 +117,8 @@ const HitsList = ({data}) => (
                         <EuiPanel>
                             <EuiFlexGroup>
                                 <EuiFlexItem grow={false}>
-                                    <EuiCheckbox />
+                                    <EuiCheckbox id={hit.fields.fundingBodyAwardId} onChange={() => {
+                                    }}/>
                                 </EuiFlexItem>
                                 <EuiFlexItem grow={6}>
                                     <EuiTitle size="xs">
@@ -147,6 +154,8 @@ function App() {
         <EuiPage>
             <EuiPageSideBar>
                 <SearchBar loading={loading}/>
+                <EuiHorizontalRule margin="m"/>
+                <FunderNameInput/>
                 <EuiHorizontalRule margin="m"/>
                 <Facets data={results} loading={loading}/>
                 <EuiHorizontalRule margin="m"/>
